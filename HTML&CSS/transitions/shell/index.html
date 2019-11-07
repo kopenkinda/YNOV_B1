@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>SHELL SCRIPTS</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    textarea {
+      transition: all .33s;
+      font-family: monospace;
+      width: 50vw;
+      height: 100vh;
+      border: none;
+      outline: none;
+      border: 4px solid transparent;
+      padding: 8px;
+    }
+
+    textarea:hover {
+      width: 60vw;
+    }
+
+    textarea:focus {
+      border: 4px solid rgb(14, 55, 189);
+    }
+
+    #script {
+      background-color: #333333;
+      color: #ffffff;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <textarea name="art" id="art" cols="100" rows="20"></textarea>
+  <textarea name="script" id="script" cols="100" rows="20" readonly></textarea>
+
+  <script>
+
+    const specials = '\"`\\'.split( '' )
+      , regex = RegExp( '[' + specials.join( '\\' ) + ']', 'g' );
+
+    document.querySelector( '#art' ).oninput = () =>
+    {
+      const lines = document.querySelector( '#art' )
+        .value.split( '\n' );
+
+      document.querySelector( '#script' ).value = '';
+      for ( let line of lines )
+      {
+        document.querySelector( '#script' )
+          .value += `echo "${ line.replace( regex, '\\$&' ) }" \nsleep .05\n`;
+      }
+    }
+
+  </script>
+
+
+</body>
+
+</html>

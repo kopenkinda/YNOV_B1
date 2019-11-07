@@ -1,0 +1,292 @@
+@keyframes arrow-jump {
+  from {
+    padding-bottom: 0;
+  }
+  to {
+    padding-bottom: 8px;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes appear-from-center {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    height: 0;
+    margin-bottom: 100vh;
+  }
+  to {
+    height: 100vh;
+    margin-bottom: 0;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+::selection {
+  background-color: #ff0000;
+}
+
+.navbar {
+  transition: all .33s;
+  width: 64px;
+  height: 100vh;
+  position: fixed;
+  z-index: 9999;
+  background-color: #00000ff3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+}
+
+.logo {
+  width: 32px;
+  position: absolute;
+  top: 16px;
+  left: 16px;
+}
+
+.hamburger {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hamburger span {
+  width: 32px;
+  height: 2px;
+  position: relative;
+  transition: all .33s;
+  background-color: #ffffff;
+}
+
+.navbar.active .hamburger span {
+  background-color: transparent;
+}
+
+.navbar.active .hamburger span::after {
+  transform: rotate(-135deg);
+  top: 0;
+}
+
+.navbar.active .hamburger span::before {
+  transform: rotate(135deg);
+  top: 0;
+}
+
+.hamburger span::after, .hamburger span::before {
+  content: "";
+  position: absolute;
+  transition: all .33s;
+  height: 2px;
+  background-color: #ffffff;
+  width: 24px;
+  left: 4px;
+}
+
+.hamburger span::after {
+  top: 6px;
+}
+
+.hamburger span::before {
+  top: -6px;
+}
+
+.navbar.active {
+  width: 50vw;
+}
+
+.nav-socials {
+  position: absolute;
+  bottom: 32px;
+  left: 0;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.nav-socials a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: all .22s;
+}
+
+.nav-socials a:hover {
+  transform: scale(1.3);
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  color: #ffffff;
+  background: linear-gradient(to bottom, rgba(0, 0, 150, .2), rgba(0, 0, 150, .4), rgba(0, 0, 150, .2)), url("https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1280") no-repeat center center / cover;
+  animation: slide-in 1.5s alternate forwards ease-in-out;
+}
+
+.heading {
+  font-size: 2.6em;
+  text-align: center;
+  line-height: 1.4em;
+  opacity: 0;
+  font-family: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  animation: appear 1s 1.5s alternate forwards ease-in-out;
+}
+
+.subheading {
+  margin-top: -16px;
+  font-size: 1.2em;
+  font-weight: lighter;
+  opacity: 0;
+  animation: appear 1s 2.5s alternate forwards ease-in-out;
+}
+
+#to-next {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all .33s;
+  font-size: 1.2em;
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 0;
+  animation: appear .5s 3.6s alternate forwards ease-in-out, arrow-jump alternate .6s ease-in-out infinite;
+}
+
+#to-next:hover {
+  animation-play-state: paused;
+}
+
+#foods {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  height: 200vh;
+  font-size: 1.77em;
+  width: 75vw;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.coffee {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.foods-gallery {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 412px;
+  width: 1170px;
+}
+
+#foods>div:nth-child(4) {
+  height: 260px;
+}
+
+.foods-gallery_item {
+  width: 100%;
+  height: 100%;
+  margin: 0 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.foods-gallery_item::after {
+  content: "";
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px;
+  z-index: 2;
+  transition: all .33s;
+}
+
+.foods-gallery_item:hover::after {
+  background: rgba(0, 0, 50, .6);
+  backdrop-filter: blur(4.5px);
+}
+
+.foods-gallery_item img {
+  height: 100%;
+  position: relative;
+  transition: all .33s;
+  transform: scale(0);
+}
+
+.foods-gallery_item img {
+  animation: appear-from-center 1s alternate forwards;
+  animation-delay: .33s;
+  border-radius: 8px;
+}
+
+.foods-gallery_item:nth-child(2) img {
+  animation-delay: .5s;
+}
+
+.foods-gallery_item:nth-child(3) img {
+  animation-delay: .66s;
+}
+
+.foods-gallery_item:nth-child(4) img {
+  animation-delay: .75s;
+}
+
+.foods-gallery_item:hover img {
+  height: 120%;
+  margin-left: -10%;
+  margin-top: -10%;
+}
+
+.oldstyle {
+  font-family: serif;
+  font-size: .8em;
+  line-height: 1.45;
+  color: #666;
+}

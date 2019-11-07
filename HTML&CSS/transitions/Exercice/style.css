@@ -1,0 +1,362 @@
+/*? Setup */
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700&display=swap&subset=cyrillic');
+:root {
+  --font-size: 14px;
+  --sans-serif: 'Open sans', sans-serif;
+  --serif: 'Playfair Display', serif;
+  --accent: #eed440;
+}
+
+::selection {
+  background-color: var(--accent);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: var(--sans-serif);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: var(--font-size);
+}
+
+/*? Components */
+
+.button {
+  padding: 16px 48px;
+  background-color: var(--accent);
+  color: #000;
+  text-decoration: none;
+  border-bottom: 4px solid var(--accent);
+  transition: all .33s;
+  z-index: 2;
+}
+
+.button:hover {
+  background-color: #d1ba38;
+  border-bottom: 4px solid #fff;
+  border-radius: 8px 8px 0 0;
+}
+
+.headline {
+  font-family: var(--serif);
+}
+
+/*? Navigation */
+
+.appNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background-color: #181818f5;
+  backdrop-filter: blur(1.5px);
+  padding: 0 8px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 999999;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+}
+
+.logo a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  transition: all .33s;
+  text-decoration: none;
+  font-size: 2.5em;
+}
+
+.logo a:hover {
+  color: var(--accent);
+}
+
+.logo a span {
+  font-size: 1.5rem;
+  margin-left: 8px;
+}
+
+.appNav>a {
+  margin: 0 8px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 300;
+  transition: all .33s;
+  padding: 2px 0;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.appNav>a:hover {
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+}
+
+/*? Header */
+
+.appHeader {
+  background: url('https://images.unsplash.com/photo-1464457312035-3d7d0e0c058e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1280') center center / cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 0 64px;
+  overflow: hidden;
+}
+
+#mainHeadline {
+  opacity: 0;
+  position: relative;
+  animation: appear-left 2s forwards alternate;
+  font-size: 3.5em;
+  font-weight: 400;
+  color: #ffffff;
+  margin-bottom: 0;
+  z-index: 2;
+}
+
+#mainUnderline {
+  opacity: 0;
+  position: relative;
+  animation: appear-left 2s .33s forwards alternate;
+  color: #ffffffad;
+  margin-top: 4px;
+  z-index: 2;
+}
+
+#headerButton {
+  opacity: 0;
+  position: relative;
+  animation: appear-left 2s .66s forwards alternate;
+}
+
+#headerVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/*? App Content */
+
+/*!- Decription -*/
+
+#description {
+  position: relative;
+  width: 100%;
+  height: calc(50vh + 96px);
+  margin-top: -64px;
+  padding: 96px 64px 16px;
+  z-index: 3;
+  background-color: #ffffff;
+}
+
+#descriptionHeadline {
+  font-size: 2em;
+  margin: 0;
+}
+
+#descriptionText {
+  width: 50%;
+}
+
+#descriptionImage {
+  transition: all .33s;
+  max-height: calc(50vh - 16px);
+  height: calc(50vh - 16px);
+  position: absolute;
+  right: 64px;
+  top: 96px;
+  filter: grayscale(1);
+}
+
+#descriptionImage:hover {
+  filter: grayscale(0);
+}
+
+/*! Advantages */
+
+#advantages {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: -64px;
+  padding: 160px 64px 48px;
+}
+
+#advantageHeadline {
+  font-size: 2em;
+  position: absolute;
+  left: 50%;
+  top: 48px;
+  transform: translateX(-50%);
+}
+
+.advantage {
+  transition: all .33s;
+  width: 25%;
+  min-height: 200px;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+  text-align: center;
+  cursor: pointer;
+}
+
+.advantage:hover {
+  transform: scale(1.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 0;
+  background-color: var(--accent);
+}
+
+.advantage-icon {
+  font-size: 5em;
+  color: var(--accent);
+  background-color: #000000;
+  border-radius: 64px;
+  height: 128px;
+  width: 128px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.advantage:hover .advantage-icon {
+  color: #ffffff;
+}
+
+.advantage-name {
+  font-family: var(--serif);
+  font-weight: bold;
+  font-size: 1.8em;
+  margin-bottom: 0;
+}
+
+.advantage-description {
+  margin-top: 8px;
+  padding: 0 16px;
+}
+
+/*! Contact */
+
+#contact {
+  position: relative;
+  padding: 0 64px;
+  background-color: #333333;
+}
+
+#contact-us {
+  position: absolute;
+  top: -63px;
+}
+
+#contactHeadline {
+  position: relative;
+  color: #ffffff;
+  font-size: 2em;
+  font-weight: 300;
+  margin: 0;
+  padding-top: 16px;
+}
+
+#contactForm {
+  display: grid;
+  grid-template: 64px minmax(64px, 128px) auto / repeat(12, 1fr);
+  gap: 32px;
+  padding: 16px 0;
+}
+
+#contactForm input, #contactForm textarea {
+  outline: none;
+  border: 1px solid var(--accent);
+  background-color: #333333;
+  font-size: 1.5em;
+  padding: 8px 16px;
+  color: #ffffff;
+}
+
+#formName {
+  grid-column: 1 / 7;
+}
+
+#formEmail {
+  grid-column: 7 / 13;
+}
+
+#formMessage {
+  grid-column: 1 / 13;
+  height: 128px;
+}
+
+#formButton {
+  outline:none;
+  border:none;
+  transition: all .33s;
+  grid-column: 5 / 9;
+  margin-top: -16px;
+  border: 1px solid var(--accent);
+  padding: 16px 0;
+  font-size: 1.2em;
+  background-color: transparent;
+  color: #ffffff;
+}
+
+#formButton:hover {
+  background-color: var(--accent);
+  border-radius: 0;
+  color: #000000;
+}
+
+/*! Map */
+
+#locationMap {
+  width: 100vw;
+}
+
+/*? Footer */
+
+footer {
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  color: #ffffff;
+  margin-top: -2px;
+}
+
+footer a {
+  transition: all .33s;
+  margin-bottom: -2px;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--accent);
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+}
+
+footer a:hover {
+  border-bottom: 1px solid var(--accent);
+}
