@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # ?Déplacer un fichier dans un dossier appelé "corbeille", situé à côté du script.
 #   v- Si le dossier n'existe pas, alors le script doit le créer.
@@ -85,7 +85,7 @@ case $ACTION in
   getConfirmation
   CONFIRMATION=$?
   if [ $CONFIRMATION -eq 1 ]; then
-    rm -rf "./corbeille/*"
+    rm -rf ./corbeille/*
     echo "Succesefully erased all files"
   else
     echo "Action cancelled"
