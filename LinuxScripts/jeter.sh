@@ -90,6 +90,6 @@ case $ACTION in
   else
     echo "Action cancelled"
   fi
-;;
+  ;;
   # Vider
 esac
