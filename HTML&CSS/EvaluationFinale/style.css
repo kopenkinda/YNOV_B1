@@ -1,0 +1,376 @@
+@font-face {
+  font-family: "Caviar Dreams";
+  src: url(assets/fonts/CaviarDreams.ttf)
+}
+
+@font-face {
+  font-family: "Caviar Dreams Bold";
+  src: url(assets/fonts/CaviarDreams_Bold.ttf)
+}
+
+@font-face {
+  font-family: "Caviar Dreams Italic";
+  src: url(assets/fonts/CaviarDreams_Italic.ttf)
+}
+
+@font-face {
+  font-family: "Caviar Dreams BoldItalic";
+  src: url(assets/fonts/CaviarDreams_BoldItalic.ttf)
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: "Caviar Dreams"
+}
+
+h6 {
+  font-family: "Caviar Dreams Italic"
+}
+
+h5>a {
+  color: inherit
+}
+
+.intro {
+  background-image: url(assets/images/meilleure-banque-image.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 0;
+  animation: open;
+  animation-duration: 1s;
+  animation-fill-mode: forwards
+}
+
+@keyframes open {
+  from {
+    height: 0
+  }
+  to {
+    height: 550px
+  }
+}
+
+.fade {
+  opacity: 0;
+  animation: fade;
+  animation-delay: 1s;
+  animation-duration: 1s;
+  animation-fill-mode: forwards
+}
+
+@keyframes fade {
+  from {
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
+}
+
+.bolder {
+  font-weight: bolder
+}
+
+.impact-container {
+  width: inherit;
+  overflow: hidden;
+  position: relative
+}
+
+.impact-container-text {
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Caviar Dreams";
+  font-size: 2rem;
+  font-weight: bolder
+}
+
+.impact-text-italic {
+  font-family: "Caviar Dreams Italic";
+  font-size: 1.4rem
+}
+
+.impact-text {
+  font-family: "Caviar Dreams Italic";
+  font-size: 1.4rem
+}
+
+.mention-text-italic {
+  font-family: "Caviar Dreams";
+  font-size: .6rem
+}
+
+.article {
+  max-width: 1310px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: sans-serif
+}
+
+.divider {
+  border: solid thin #4c4c4c
+}
+
+#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  padding: 0
+}
+
+.navbar {
+  border-bottom: solid 1px rgba(0, 0, 0, .125);
+  padding: 0!important;
+  background-color: #ffffff;
+}
+
+.navbar>.container {
+  padding-top: 0;
+  padding-bottom: 0
+}
+
+a {
+  color: #368ebd
+}
+
+.lorem {
+  color: #4c4c4c;
+  font-weight: bolder;
+  font-family: sans-serif;
+  font-size: 1.8rem
+}
+
+.ipsum {
+  font-family: "Caviar Dreams";
+  color: #368ebd;
+  font-size: 2.5rem
+}
+
+h1 {
+  font-family: "Caviar Dreams";
+  color: #368ebd
+}
+
+h1 .fa-icon {
+  color: #368ebd;
+  margin-left: 15px;
+  font-size: .7em;
+}
+
+h1.bigger {
+  font-size: 4.3em;
+}
+
+hr {
+  margin-top: 0;
+}
+
+div.success {
+  background-color: #9c0;
+  color: #fff!important
+}
+
+.success>* {
+  color: #fff!important
+}
+
+.flex {
+  display: flex;
+}
+
+.btn-primary {
+  background-color: #368ebd
+}
+
+.btn-primary:hover {
+  background-color: #2b7197
+}
+
+.btn-success>a {
+  color: #fff!important
+}
+
+.btn-success {
+  background-color: #9c0;
+  border-color: #9c0
+}
+
+.btn-success:hover {
+  background-color: #8bb805;
+  border-color: #8bb805
+}
+
+.circle {
+  background-color: #929292;
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+  color: #fff;
+  font-size: 2rem;
+  padding-left: .6rem
+}
+
+.details {
+  padding: .5rem
+}
+
+.details .details-point {
+  padding-top: .7rem;
+  padding-right: 0;
+  padding-left: 0
+}
+
+.td-primary {
+  background-color: hsl(201, 56%, 48%);
+  color: #fff
+}
+
+.td-info {
+  background-color: hsl(201, 58%, 54%);
+  color: #fff
+}
+
+.td-success {
+  background-color: #9c0;
+  color: #fff
+}
+
+.td-primary>h1.bigger {
+  background-color: #368ebd;
+  color: #fff
+}
+table {
+  width: 30% !important;
+}
+
+td {
+  font-size: .9em
+}
+
+p.info {
+  color: #479fce
+}
+
+.white {
+  color: #fff
+}
+
+.green {
+  color: #9c0
+}
+
+.success {
+  color: #9c0
+}
+
+.bleu {
+  color: #368ebd
+}
+
+.grey {
+  color: #929292
+}
+
+.black {
+  color: #000
+}
+
+.primary {
+  color: #479fce
+}
+
+.smaller {
+  font-size: .9em
+}
+
+span.bigger {
+  font-size: 1.1em
+}
+
+p.smaller::first-letter {
+  float: left;
+  font-family: "Caviar Dreams";
+  color: #479fce;
+  font-size: 1.7em;
+  line-height: .5em;
+  padding-top: .2em;
+  padding-right: .2em;
+  padding-left: .1em
+}
+
+.btn>.display-on-hover {
+  display: none
+}
+
+.btn:hover>.display-on-hover {
+  display: inline;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: .3s
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0
+  }
+  100% {
+    opacity: 1
+  }
+}
+
+ul {
+  list-style-type: circle
+}
+
+.fit-parent {
+  width: inherit
+}
+
+.need-to-display-percent:before {
+  content: "62";
+  animation-name: count;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 2s
+}
+
+@keyframes count {
+  from {
+    content: "0"
+  }
+  12% {
+    content: "4"
+  }
+  21% {
+    content: "8"
+  }
+  31% {
+    content: "13"
+  }
+  41% {
+    content: "18"
+  }
+  51% {
+    content: "23"
+  }
+  61% {
+    content: "28"
+  }
+  71% {
+    content: "35"
+  }
+  81% {
+    content: "44"
+  }
+  91% {
+    content: "54"
+  }
+  to {
+    content: "62"
+  }
+}
