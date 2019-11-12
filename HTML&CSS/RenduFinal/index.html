@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+
+Création d’un site vitrine / CV, les sections suivantes sont attendues.
+
+· Introduction : Que retrouve-t-on sur ce site ?
+· Présentation de vous-même (c’est un site CV)
+· Présentation des compétences (celles que vous allez acquérir au cours de 
+l’année et celles que vous avez acquise à l’extérieur de votre cursus)
+· Présentation de vos projets (technique, lien vers votre GitHub ?)
+· Vos activités annexes, vos passions.
+
+Ajout d’une partie contact : Formulaire de contact et
+ouverture d’un client web (avoir les deux options de disponible).
+
+De plus ce site devra avoir une partie blog (attendu pour votre rendu de fin d’étude)
+qui contiendra des éléments de type billets. Différents types de billets
+(au moins un exemple de chaque) :
+· Image
+· Vidéo
+· Code (affichage de partie de code)
+· … autres (au choix mais les trois premiers obligatoires !)
+
+Bien sûr le tout accompagné de texte.
+(Chaque type de billet doit avoir un style différent,
+changement du Header ou autre, à votre libre choix)
+
+ -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CV Kopenkin</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="styles/animations.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/media.css">
+</head>
+
+<body>
+  <nav>
+    <div class="hamburger">
+      <span class="line"></span>
+      <span class="name">Kopenkin</span>
+    </div>
+    <menu type="context" class="nav-menu">
+      <a href="#top"><i class="material-icons md-light">expand_less</i> <span>Top</span></a>
+      <a href="#about-me"><i class="material-icons md-light">face</i> <span>About me</span></a>
+      <a href="#skills"><i class="material-icons md-light">school</i> <span>Skills</span></a>
+      <a href="#projects"><i class="material-icons md-light">work</i> <span>Projects</span></a>
+      <a href="#activities"><i class="material-icons md-light">sports_esports</i> <span>Activities</span></a>
+      <a href="#blog"><i class="material-icons md-light">format_align_center</i> <span>Blog</span></a>
+      <a href="#contact"><i class="material-icons md-light">mail</i> <span>Contact</span></a>
+    </menu>
+    <div class="socials"></div>
+  </nav>
+  <header id="top">
+    <h1 id="name">Kopenkin Dmitrii</h1>
+    <p class="typed"></p>
+  </header>
+  <main>
+
+    <section id="about-me">
+      <h2 class="section-heading hidden">About me</h2>
+      <div class="content nw">
+        <p>Hello, my name is Dmitrii...
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Alias dignissimos aliquid sint provident magnam aut
+          earum. Molestias est possimus, consectetur, eos velit
+          itaque magnam hic, voluptas ratione quaerat quam
+          repellat.
+        </p>
+        <img src="https://avatars0.githubusercontent.com/u/32075406?s=460&v=4" alt="Me :)">
+      </div>
+    </section>
+    <section id="skills">
+      <h2 class="section-heading hidden">Skills</h2>
+      <div class="content">
+        <div class="skill">
+          <span class="skill-name">HTML5</span>
+          <span class="skill-level">
+            <span class="fill seventy empty"></span>
+          </span>
+        </div>
+        <div class="skill">
+          <span class="skill-name">CSS3</span>
+          <span class="skill-level ">
+            <span class="fill sixty empty"></span>
+          </span>
+        </div>
+        <div class="skill">
+          <span class="skill-name">JS ES2017</span>
+          <span class="skill-level ">
+            <span class="fill eighty empty"></span>
+          </span>
+        </div>
+        <div class="skill">
+          <span class="skill-name">C</span>
+          <span class="skill-level ">
+            <span class="fill twenty empty"></span>
+          </span>
+        </div>
+        <div class="skill">
+          <span class="skill-name">C++</span>
+          <span class="skill-level ">
+            <span class="fill ten empty"></span>
+          </span>
+        </div>
+        <div class="skill">
+          <span class="skill-name">Python</span>
+          <span class="skill-level ">
+            <span class="fill sixty empty"></span>
+          </span>
+        </div>
+      </div>
+    </section>
+    <section id="projects">
+      <h2 class="section-heading hidden">Projects</h2>
+      <div class="content sa">
+        <div class="project">
+          <img src="/assets/aqua.png" alt="AQUAservice" class="project-image">
+          <strong class="project-name">AQUAservice</strong>
+          <p class="project-description">Landing page with prices calculator for AQUAservice LTD.</p>
+          <a href="http://aquaservice24.com/" target="_blank" class="project-link">
+            <i class="material-icons">insert_link</i>
+          </a>
+        </div>
+        <div class="project">
+          <img src="/assets/gulp.png" alt="Gulp" class="project-image">
+          <strong class="project-name">Gulp web-template</strong>
+          <p class="project-description">Personal Gulp-based static optimization template</p>
+          <a href="https://github.com/kopenkinda/GulpTemplate" target="_blank" class="project-link">
+            <i class="material-icons">insert_link</i>
+          </a>
+        </div>
+        <div class="project">
+          <img src="/assets/tochno.png" alt="TohnoPizza" class="project-image">
+          <strong class="project-name">TochoPizza</strong>
+          <p class="project-description">An e-commerce site for TochnoPizza LTD.</p>
+          <a href="https://tochnopizza.ru/#!/" target="_blank" class="project-link">
+            <i class="material-icons">insert_link</i>
+          </a>
+        </div>
+      </div>
+    </section>
+    <section id="activities">
+      <h2 class="section-heading hidden">Activities</h2>
+      <div class="content"></div>
+    </section>
+    <section id="blog">
+      <h2 class="section-heading hidden">Blog</h2>
+      <div class="content"></div>
+    </section>
+    <section id="contact">
+      <h2 class="section-heading hidden">Contact</h2>
+      <form action="mailto:kopenkin.da@gmail.com" class="content grid">
+        <input type="text" id="user-name" placeholder="Your name...">
+        <input type="email" id="user-mail" placeholder="Your email...">
+        <textarea name="message" id="user-message" cols="30" rows="10" placeholder="Your message..."></textarea>
+        <button type="submit" value="Contact me" id="contact-button">Contact me</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    Created with ❤️ by&nbsp;<a href="https://t.me/leroifrancais" target="_blank"><i
+        class="fab fa-telegram-plane"></i>Dmitrii Kopenkin</a> &nbsp;&copy; 2019
+  </footer>
+
+
+  <!-- Scripts -->
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+  <script src="scripts/main.js"></script>
+
+</body>
+
+</html>
