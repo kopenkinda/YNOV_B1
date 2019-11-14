@@ -27,7 +27,7 @@ const typeOptions = {
   ],
   loop: true,
   loopCount: Infinity,
-  typeSpeed: 80
+  typeSpeed: 60
 };
 
 const typed = new Typed( '.typed', typeOptions ); 
