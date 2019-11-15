@@ -57,30 +57,14 @@ int mystrcmp(const char *str1, const char *str2)
 
 // ? strchr : rechercher un caractére dans une chaîne
 
-char *mystrchr(const char *str, int c)
+char *mystrchr(const char *p, int ch)
 {
-  int len = mystrlen(str),
-      hasFound = 0,
-      counter = 0;
-  char *result;
-
-  for (int i = 0; i <= len; i++)
-  {
-    if (!hasFound)
-    {
-      if (str[i] == c)
-      {
-        result[counter] = str[i];
-        counter++;
-      }
-    }
-    else
-    {
-      result[counter] = str[i];
-      counter++;
-    };
-  }
-  return result;
+  for (;; p++) {
+		if (*p == (char)ch)
+			return p;
+		if (*p == '\0')
+			return (NULL);
+	}
 }
 
 // ? strstr : recherche une chaîne dans une autre
@@ -138,7 +122,7 @@ int main()
   // ! My strchr
   const char str[] = "http://www.tutorialspoints.com";
   const char ch = '.';
-  char *myret = strchr(str, ch);
+  char *myret = mystrchr(str, ch);
   char *ret = strchr(str, ch);
   printf("Test 5(strchr): %d -> %s\n", !strcmp(ret, myret), myret);
 
@@ -147,8 +131,6 @@ int main()
   const char needle[10] = "String";
   char *ret2 = strstr(haystack, needle);
   char *myret2 = mystrstr(haystack, needle);
-
-  ret = strstr(haystack, needle);
   printf("Test 6(strstr): %d -> %s\n", !strcmp(ret2, myret2), myret2);
   return 0;
 }
