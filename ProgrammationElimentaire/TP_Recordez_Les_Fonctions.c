@@ -84,6 +84,24 @@ char *mystrchr(const char *str, int c)
 }
 
 // ? strstr : recherche une chaîne dans une autre
+char *mystrstr(char *str, char *substr)
+{
+  while (*str)
+  {
+    char *Begin = str;
+    char *pattern = substr;
+
+    while (*str && *pattern && *str == *pattern)
+    {
+      str++;
+      pattern++;
+    }
+    if (!*pattern)
+      return Begin;
+    str = Begin + 1;
+  }
+  return NULL;
+}
 
 int main()
 {
@@ -101,31 +119,36 @@ int main()
        str11[1000] = {0};
 
   //! My strlen
-  printf("Test 1(strlen): %d\n", it_int(mystrlen(str1), strlen(str1)));
+  printf("Test 1(strlen): %d -> %d\n", it_int(mystrlen(str1), strlen(str1)), mystrlen(str1));
 
   //! My strcpy
   mystrcpy(str1, str4);
   strcpy(str5, str1);
-  printf("Test 2(strcpy): %d\n", !strcmp(str4, str5));
+  printf("Test 2(strcpy): %d -> %s\n", !strcmp(str4, str5), str4);
 
   //! My strcat
   strcat(str6, str7);
   mystrcat(str8, str9);
-  printf("Test 3(strcat): %d\n", !strcmp(str6, str8));
+  printf("Test 3(strcat): %d -> %s\n", !strcmp(str6, str8), str6);
 
   //! My strcmp
-  
-  printf("Test 4(strcmp): %d\n", it_int(strcmp(str6, str8), mystrcmp(str6, str8)));
+
+  printf("Test 4(strcmp): %d -> %d\n", it_int(strcmp(str6, str8), mystrcmp(str6, str8)), mystrcmp(str6, str8));
 
   // ! My strchr
   const char str[] = "http://www.tutorialspoints.com";
   const char ch = '.';
   char *myret = strchr(str, ch);
   char *ret = strchr(str, ch);
-  printf("Test 5(strchr): %d\n", !strcmp(ret, myret));
+  printf("Test 5(strchr): %d -> %s\n", !strcmp(ret, myret), myret);
 
   //! My strstr
-  printf("Test 6(strstr): %d\n", !strcmp(ret, myret));
-  
+  const char haystack[20] = "TestString";
+  const char needle[10] = "String";
+  char *ret2 = strstr(haystack, needle);
+  char *myret2 = mystrstr(haystack, needle);
+
+  ret = strstr(haystack, needle);
+  printf("Test 6(strstr): %d -> %s\n", !strcmp(ret2, myret2), myret2);
   return 0;
 }
