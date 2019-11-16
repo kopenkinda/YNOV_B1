@@ -59,30 +59,51 @@ int mystrcmp(const char *str1, const char *str2)
 
 char *mystrchr(const char *p, int ch)
 {
-  for (;; p++) {
-		if (*p == (char)ch)
-			return p;
-		if (*p == '\0')
-			return (NULL);
-	}
+  // for (;; p++)
+  // {
+  //   if (*p == (char)ch)
+  //     return p;
+  //   if (*p == '\0')
+  //     return (NULL);
+  // }
+  // * second ver
+  char *res = (char *)p;
+  int i = 0;
+  for (; res[i] != (char)ch; i++)
+  {
+    if (res[i] == '\0')
+      return NULL;
+  }
+  return (res + i);
 }
 
 // ? strstr : recherche une chaîne dans une autre
-char *mystrstr(char *str, char *substr)
+char *mystrstr(const char *str1, const char *str2)
 {
-  while (*str)
+  char *p1 = (char *)str1, *p2 = (char *)str2, *p3;
+  int j = 0;
+  for (int i = 0; i < strlen(str1); i++)
   {
-    char *Begin = str;
-    char *pattern = substr;
-
-    while (*str && *pattern && *str == *pattern)
+    if (*p1 == *p2)
     {
-      str++;
-      pattern++;
+      p3 = p1;
+      for (j = 0; j < strlen(str2); j++)
+      {
+        if (*p3 == *p2)
+        {
+          p3++;
+          p2++;
+        }
+        else
+          break;
+      }
+      p2 = (char *)str2;
+      if (j == strlen(str2))
+      {
+        return (p1 + i - mystrlen(str2));
+      }
     }
-    if (!*pattern)
-      return Begin;
-    str = Begin + 1;
+    p1++;
   }
   return NULL;
 }
@@ -120,14 +141,14 @@ int main()
   printf("Test 4(strcmp): %d -> %d\n", it_int(strcmp(str6, str8), mystrcmp(str6, str8)), mystrcmp(str6, str8));
 
   // ! My strchr
-  const char str[] = "http://www.tutorialspoints.com";
+  const char stri[] = "http://www.tutorialspoints.com";
   const char ch = '.';
-  char *myret = mystrchr(str, ch);
-  char *ret = strchr(str, ch);
+  char *myret = mystrchr(stri, ch);
+  char *ret = strchr(stri, ch);
   printf("Test 5(strchr): %d -> %s\n", !strcmp(ret, myret), myret);
 
   //! My strstr
-  const char haystack[20] = "TestString";
+  const char haystack[20] = "TestSdStringTest";
   const char needle[10] = "String";
   char *ret2 = strstr(haystack, needle);
   char *myret2 = mystrstr(haystack, needle);
