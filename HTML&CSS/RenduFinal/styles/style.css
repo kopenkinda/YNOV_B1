@@ -409,7 +409,7 @@ section:nth-child(2n) {
 .blog-post {
 	width: 80%;
 	height: calc(100%/3 - 16px);
-	background-color: #fff;
+	box-shadow: 0 2px 2px rgba(0,0,0,.2);
 	margin: 8px auto;
 	display: flex;
 	justify-content: space-between;
