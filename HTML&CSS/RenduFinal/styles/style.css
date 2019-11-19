@@ -433,6 +433,7 @@ section:nth-child(2n) {
 	position: relative;
 	width: 50%;
 	height: auto;
+	max-height 250px;
 }
 
 #contact .grid {
