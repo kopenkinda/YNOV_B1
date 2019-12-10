@@ -1,12 +1,13 @@
 #!/bin/sh
 
-exec < /dev/tty
+exec </dev/tty
 
 if grep -q "work in progress" $1; then
   read -p "Do you really want to commit?: " answer
   case answer in
-  "non" | "no") 
-  echo "OK, exiting."
-  exit 1 ;;
+  "no")
+    echo "OK, exiting."
+    exit 1
+    ;;
   esac
 fi
