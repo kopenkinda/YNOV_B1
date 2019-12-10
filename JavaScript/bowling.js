@@ -71,7 +71,7 @@ const countScore = playerAll =>
         console.log( `Current score: ${ player.score }pts.\n` )
       }
     }
-  } )
+  } );
 };
 
 const players = [ bowling.p1 ]; // [ bowling.p1, bowling.p2 ]
