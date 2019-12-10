@@ -1,5 +1,5 @@
 #!/bin/sh
-echo $1
+echo "$1 = test"
 if [[ $1 == *"work in progress"* ]]
 then
    read -p "Do you really want to commit?: " answer
