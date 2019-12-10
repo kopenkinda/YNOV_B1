@@ -6,7 +6,7 @@ if grep -q "work in progress" $1; then
   read -p "Do you really want to commit?: " answer
   case answer in
   "no")
-    echo "OK, exiting."
+    echo "OK, exiting..."
     exit 1
     ;;
   esac
