@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "$1 = test"
+echo "$1 = testz"
 if [[ $1 == *"work in progress"* ]]; then
   read -p "Do you really want to commit?: " answer
   case answer in
