@@ -1,3 +1,4 @@
+//@ts-check
 //? TP
 //? 10 tirs au lancer au total
 //? chaque lancé a 2 boules
@@ -9,8 +10,8 @@
 //? sur le dernier tir en cas de strike on ajoutera 2 boules au tir
 
 const bowling = {
-  p1: { throws: [], score: 0 },
-  // p2: { throws: [], score: 0 },
+  p1: { throws: [], score: 0, name: "Johny" },
+  p2: { throws: [], score: 0, name: "Joe Mama" },
 };
 
 const generateThrows = ( playerAll, throwsCount ) =>
@@ -39,22 +40,24 @@ const countScore = playerAll =>
         // * Strike
         if ( throw1 == 10 )
         {
-          console.log( `Player${ index + 1 }: ${ throw1 } - ${ throw2 } -> Strike` );
+          console.log( `${player.name}'s turn: ${ throw1 } - ${ throw2 } -> Strike` );
           try
           {
             if ( player.throws[ i + 1 ][ 0 ] == 10 )
             {
-              player.score += throw1 + throw2 + 10 + player.throws[ i + 2 ][ 0 ] + player.throws[ i + 2 ][ 1 ];
+              player.score += throw1 + 10 + player.throws[ i + 2 ][ 0 ] + player.throws[ i + 2 ][ 1 ];
             } else
             {
-              player.score += throw1 + throw2 + player.throws[ i + 1 ][ 0 ] + player.throws[ i + 1 ][ 1 ];
+              player.score += throw1 + player.throws[ i + 1 ][ 0 ] + player.throws[ i + 1 ][ 1 ];
             }
           } catch ( e )
           {
             let throw3 = Math.round( Math.random() * 10 );
+            // throw3 = 10; // !All Strikes
             if ( throw3 == 10 )
             {
               let throw4 = Math.round( Math.random() * 10 );
+              // throw4 = 10; // !All Strikes
               player.score += throw1 + throw2 + throw3 + throw4 + Math.round( Math.random() * ( 10 - throw4 ) );
             } else
             {
@@ -65,7 +68,7 @@ const countScore = playerAll =>
         // * Spare
         else if ( ( throw1 + throw2 ) == 10 || throw2 == 10 )
         {
-          console.log( `Player${ index + 1 }: ${ throw1 } - ${ throw2 } -> Spare` );
+          console.log( `${player.name}'s turn: ${ throw1 } - ${ throw2 } -> Spare` );
           try
           {
             player.score += throw1 + throw2 + player.throws[ i + 1 ][ 0 ];
@@ -78,7 +81,7 @@ const countScore = playerAll =>
         // * Normal throw
         else
         {
-          console.log( `Player${ index + 1 }: ${ throw1 } - ${ throw2 }` )
+          console.log( `${player.name}'s turn: ${ throw1 } - ${ throw2 }` )
           player.score += throw1 + throw2;
         }
         console.log( `Current score: ${ player.score }pts.\n` )
@@ -87,9 +90,15 @@ const countScore = playerAll =>
   } );
 };
 
-const players = [ bowling.p1 ]; // [ bowling.p1, bowling.p2 ]
+const getLeaderboard = players =>
+{
+  const sortedPlayers = players.sort( ( playerX, playerY ) => playerX.score < playerY.score );
+  console.log('====== LEADERBOARD ======\n\n');
+  sortedPlayers.forEach( ( player, index ) => console.log( `${ index + 1 }) ${ player.name } -> ${ player.score } points.` ) )
+}
+
+const players = [ bowling.p1, bowling.p2 ];
 generateThrows( players, 10 );
-// bowling.p1.throws = [ [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ] ];
+// bowling.p1.throws = [ [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ] ] // * All Strikes
 countScore( players );
-console.log( "Player 1's score is", bowling.p1.score, "points." );
-// console.log( "Player 2's score is", bowling.p2.score, "points." );
+getLeaderboard( players );
