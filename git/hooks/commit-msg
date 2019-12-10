@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [[ $1 =~ "work in progress" ]]
+if [[ $1 == *"work in progress"* ]]
 then
    read -p "Do you really want to commit?: " answer
    case answer in 
