@@ -70,8 +70,8 @@ const countScore = playerAll =>
         }
         console.log( `${ i } Current score: ${ player.score }pts.\n` )
       }
-    }
-  } )
+    };
+  } );
 };
 
 generateThrows( [ bowling.p1 ], 10 );
