@@ -42,11 +42,24 @@ const countScore = playerAll =>
           console.log( `Player${ index + 1 }: ${ throw1 } - ${ throw2 } -> Strike` );
           try
           {
-            player.score += throw1 + throw2 + player.throws[ i + 1 ][ 0 ] + player.throws[ i + 1 ][ 1 ];
+            if ( player.throws[ i + 1 ][ 0 ] == 10 )
+            {
+              player.score += throw1 + throw2 + 10 + player.throws[ i + 2 ][ 0 ] + player.throws[ i + 2 ][ 1 ];
+            } else
+            {
+              player.score += throw1 + throw2 + player.throws[ i + 1 ][ 0 ] + player.throws[ i + 1 ][ 1 ];
+            }
           } catch ( e )
           {
             let throw3 = Math.round( Math.random() * 10 );
-            player.score += throw1 + throw2 + throw3 + Math.round( Math.random() * ( 10 - throw3 ) );
+            if ( throw3 == 10 )
+            {
+              let throw4 = Math.round( Math.random() * 10 );
+              player.score += throw1 + throw2 + throw3 + throw4 + Math.round( Math.random() * ( 10 - throw4 ) );
+            } else
+            {
+              player.score += throw1 + throw2 + throw3 + Math.round( Math.random() * ( 10 - throw3 ) );
+            }
           }
         }
         // * Spare
@@ -76,7 +89,7 @@ const countScore = playerAll =>
 
 const players = [ bowling.p1 ]; // [ bowling.p1, bowling.p2 ]
 generateThrows( players, 10 );
-bowling.p1.throws = [ [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ] ];
+// bowling.p1.throws = [ [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ] ];
 countScore( players );
 console.log( "Player 1's score is", bowling.p1.score, "points." );
 // console.log( "Player 2's score is", bowling.p2.score, "points." );
