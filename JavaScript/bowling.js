@@ -99,6 +99,6 @@ const getLeaderboard = players =>
 
 const players = [ bowling.p1 ];//, bowling.p2 ];
 generateThrows( players, 10 );
-bowling.p1.throws = [ [ 5, 0 ], [ 6, 4 ], [ 10, 0 ], [ 5, 4 ] ];
+bowling.p1.throws = [ [ 6, 4 ], [ 5, 2 ], [ 7, 3 ], [2, 5] ];
 countScore( players );
 getLeaderboard( players );
