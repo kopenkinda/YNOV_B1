@@ -15,7 +15,7 @@ let deletionCounter = 0;
 
 // localStorage.removeItem( 'myTodoList' );
 if ( !localStorage[ 'myTodoList' ] ) localStorage.setItem( 'myTodoList', JSON.stringify( [ { name: "First TODO item", checked: false, id: 0 } ] ) );
-let todos = JSON.parse( localStorage[ 'myTodoList' ] );
+let todos = JSON.parse( localStorage[ 'myTodoList' ] ); // []
 let id = todos.length;
 
 const addTodo = ( name ) =>
