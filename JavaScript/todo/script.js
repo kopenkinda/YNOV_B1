@@ -14,15 +14,17 @@ const [ input, list, addButton, selectedCounter, bulkDelete ] = [ '#actionInput'
 let deletionCounter = 0;
 
 // localStorage.removeItem( 'myTodoList' );
-if ( !localStorage[ 'myTodoList' ] ) localStorage.setItem( 'myTodoList', JSON.stringify( [ { name: "First TODO item", checked: false } ] ) );
+if ( !localStorage[ 'myTodoList' ] ) localStorage.setItem( 'myTodoList', JSON.stringify( [ { name: "First TODO item", checked: false, id: 0 } ] ) );
 let todos = JSON.parse( localStorage[ 'myTodoList' ] );
+let id = todos.length;
 
 const addTodo = ( name ) =>
 {
   if ( name === '' ) return false;
   todos.push( {
     name,
-    checked: false
+    checked: false,
+    id: ++id
   } );
   render();
   return true;
@@ -48,6 +50,7 @@ const render = () =>
   // render list
   todos.forEach( ( todo, index ) =>
   {
+    todo.id = index;
     let { name, checked } = todo;
     let todoContainer = document.createElement( 'li' );
     todoContainer.classList.add( 'todo-item' );
@@ -109,7 +112,7 @@ bulkDelete.onclick = () =>
 {
   JSON.parse( JSON.stringify( todos ) ).forEach( todo =>
   {
-    if ( todo.checked ) todos = todos.filter( t => t.name != todo.name );
+    if ( todo.checked ) todos = todos.filter( t => t.id != todo.id );
   } )
   render();
 }
