@@ -37,8 +37,18 @@ body {
   justify-content: center;
   align-items: center;
   color: #ffffff;
-  text-shadow: #085078 0 2px 8px;
   border-radius: 4px 4px 0 0;
+  position: relative;
+}
+
+.appHeader h1 {
+  text-shadow: #000000 0 0 2px;
+}
+
+#clearAll {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
 }
 
 #todos {
