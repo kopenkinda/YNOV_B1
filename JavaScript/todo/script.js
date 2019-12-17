@@ -27,6 +27,7 @@ const addTodo = ( name ) =>
     id: ++id,
     priority: select( '#priority' ).value || 0
   } );
+  todos = todos.sort( ( a, b ) => a.priority - b.priority );
   render();
   return true;
 }
@@ -49,7 +50,7 @@ const render = () =>
   list.innerHTML = '';
 
   // render list
-  todos.sort( ( a, b ) => a.priority > b.priority ).forEach( ( todo, index ) =>
+  todos.forEach( ( todo, index ) =>
   {
     todo.id = index;
     let { name, checked, id, priority } = todo;
@@ -192,6 +193,5 @@ const gradients = [
 ];
 
 document.body.style.backgroundImage = `linear-gradient(to left, ${ gradients[ Math.round( Math.random() * ( gradients.length - 1 ) ) ].reduce( ( acc, cur ) => acc + ', ' + cur, '' ).slice( 2 ) })`
-
 
 render();
