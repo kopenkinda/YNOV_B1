@@ -9,4 +9,4 @@ const tree = layer =>
   return result;
 };
 
-tree( 5 ).forEach( n => console.log( n ) );
+tree( 7 ).forEach( n => console.log( n ) );

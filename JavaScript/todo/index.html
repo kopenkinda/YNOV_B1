@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TO:DO list</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap&subset=cyrillic" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/56ed82bde0.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="appHeader">
+      <h1>Todo list</h1>
+    </div>
+    <ul id="todos">
+      <li class="todo-item done">
+        <span class="custom-checkbox">
+          <i class="fas fa-check-square"></i>
+          <!-- <i class="fas fa-square"></i> -->
+        </span>
+        <span class="todo-item__name">
+          TO Do item here
+        </span>
+      </li>
+    </ul>
+    <div id="controls">
+      <a href="#" class="actionBtn" id="deleteItems">
+        <i class="fas fa-trash-alt"></i>
+        <span id="selectionCount" class="hidden">0</span>
+      </a>
+      <input type="text" id="actionInput" placeholder="What do you want to do?">
+      <a href="#" class="actionBtn" id="addItem"><i class="fas fa-plus"></i></a>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
