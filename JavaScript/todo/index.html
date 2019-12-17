@@ -17,15 +17,15 @@
       <h1>Todo list</h1>
     </div>
     <ul id="todos">
-      <!-- <li class="todo-item done">
+      <li class="todo-item done">
         <span class="custom-checkbox">
           <i class="fas fa-check-square"></i>
-          <i class="fas fa-square"></i> 
+          <i class="fas fa-square"></i>
         </span>
         <span class="todo-item__name">
           TO Do item here
         </span>
-      </li> -->
+      </li>
     </ul>
     <div id="controls">
       <a href="#" class="actionBtn" id="deleteItems">
@@ -33,6 +33,20 @@
         <span id="selectionCount" class="hidden">0</span>
       </a>
       <input type="text" id="actionInput" placeholder="What do you want to do?">
+      <div class="custom-select">
+        <select id="priority">
+          <option value="0">High</option>
+          <option value="1">Med</option>
+          <option value="2" selected>Low</option>
+        </select>
+        <span id="custom-select__selected">Low</span>
+        <div class="custom-select__dropdown">
+          <span data-value="0" class="custom-select__item border-red">High</span>
+          <span data-value="1" class="custom-select__item border-orange">Med</span>
+          <span data-value="2" class="custom-select__item border-green">Low</span>
+        </div>
+        <span class="select-arrow"><i class="fas fa-arrow-circle-up"></i></span>
+      </div>
       <a href="#" class="actionBtn" id="addItem"><i class="fas fa-paper-plane"></i></a>
     </div>
   </div>

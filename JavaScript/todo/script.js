@@ -14,7 +14,7 @@ const [ input, list, addButton, selectedCounter, bulkDelete ] = [ '#actionInput'
 let deletionCounter = 0;
 
 // localStorage.removeItem( 'myTodoList' );
-if ( !localStorage[ 'myTodoList' ] ) localStorage.setItem( 'myTodoList', JSON.stringify( [ { name: "First TODO item", checked: false, id: 0 } ] ) );
+if ( !localStorage[ 'myTodoList' ] ) localStorage.setItem( 'myTodoList', JSON.stringify( [ { name: "First TODO item", checked: false, id: 0, priority: 2 } ] ) );
 let todos = JSON.parse( localStorage[ 'myTodoList' ] ); // []
 let id = todos.length;
 
@@ -24,7 +24,8 @@ const addTodo = ( name ) =>
   todos.push( {
     name,
     checked: false,
-    id: ++id
+    id: ++id,
+    priority: select( '#priority' ).value || 0
   } );
   render();
   return true;
@@ -54,6 +55,12 @@ const render = () =>
     let { name, checked } = todo;
     let todoContainer = document.createElement( 'li' );
     todoContainer.classList.add( 'todo-item' );
+    if ( todo.priority == 0 )
+      todoContainer.classList.add( 'border-red' );
+    else if ( todo.priority == 1 )
+      todoContainer.classList.add( 'border-orange' );
+    else if ( todo.priority == 2 )
+      todoContainer.classList.add( 'border-green' );
 
     let customCheckbox = document.createElement( 'span' );
     customCheckbox.classList.add( 'custom-checkbox' );
@@ -115,6 +122,19 @@ bulkDelete.onclick = () =>
     if ( todo.checked ) todos = todos.filter( t => t.id != todo.id );
   } )
   render();
+}
+
+selectAll( '.custom-select__item' )
+  .forEach( span =>
+    span.onclick = () =>
+    {
+      select( '#priority' ).value = span.getAttribute( 'data-value' );
+      select( '#custom-select__selected' ).innerText = select( '#priority > option:checked' ).innerText
+    } );
+
+select( '.custom-select' ).onclick = () =>
+{
+  select( '.custom-select' ).classList.toggle( 'shown' )
 }
 
 render();

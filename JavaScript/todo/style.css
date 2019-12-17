@@ -57,6 +57,7 @@ body {
   grid-template-columns: 32px 1fr;
   justify-items: center;
   align-items: center;
+  border-right: 2px solid transparent;
 }
 
 .todo-item:nth-child(2n) {
@@ -84,7 +85,7 @@ body {
   background-color: #454545;
   border-radius: 0 0 4px 4px;
   display: grid;
-  grid-template-columns: 64px 1fr 64px;
+  grid-template-columns: 64px 1fr 96px 64px;
   justify-items: center;
   align-items: center;
 }
@@ -136,6 +137,102 @@ body {
 
 .fa-check-square {
   color: rgb(0, 189, 0);
+}
+
+.custom-select {
+  position: relative;
+  height: 40px;
+  width: 80%;
+  border: none;
+  border-radius: 0;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 4px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.custom-select select {
+  display: none;
+}
+
+.custom-select .select-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #eee;
+  font-size: 12px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 16px;
+  background-color: #222222;
+  transform: rotate(-180deg);
+}
+
+.custom-select .select-arrow i {
+  transition: all .33s;
+  transform: rotate(-180deg);
+}
+
+.custom-select.shown .select-arrow i {
+  transform: rotate(0deg);
+}
+
+.custom-select.shown .custom-select__dropdown {
+  top: calc(-64px * 3);
+  pointer-events: all;
+  opacity: 1;
+}
+
+.custom-select__dropdown {
+  opacity: 0;
+  pointer-events: none;
+  transition: all .33s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #222222;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#custom-select__selected {
+  color: #ffffff;
+}
+
+.border-red {
+  border-color: red !important;
+}
+
+.border-orange {
+  border-color: orange !important;
+}
+
+.border-green {
+  border-color: lime !important;
+}
+
+.custom-select__dropdown span {
+  height: 64px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  user-select: none;
+}
+
+.custom-select__dropdown span:hover {
+  background-color: #333333;
 }
 
 #addItem i {
