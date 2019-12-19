@@ -14,9 +14,11 @@ const [ input, list, addButton, selectedCounter, bulkDelete, clearAll ] = [ '#ac
 let deletionCounter = 0;
 
 // localStorage.removeItem( 'myTodoList' );
-if ( !localStorage[ 'myTodoList' ] ) localStorage.setItem( 'myTodoList', JSON.stringify( [ { name: "First TODO item", checked: false, id: 0, priority: 2 } ] ) );
+if ( !localStorage[ 'myTodoList' ] )
+  localStorage.setItem( 'myTodoList', JSON.stringify(
+    [ { name: "First TODO item", checked: false, id: 0, priority: 2 } ]
+  ) );
 let todos = JSON.parse( localStorage[ 'myTodoList' ] ); // []
-let id = todos.length;
 
 const addTodo = ( name ) =>
 {
@@ -24,7 +26,7 @@ const addTodo = ( name ) =>
   todos.push( {
     name,
     checked: false,
-    id: ++id,
+    id: todos.length + 1,
     priority: select( '#priority' ).value || 0
   } );
   todos = todos.sort( ( a, b ) => a.priority - b.priority );
