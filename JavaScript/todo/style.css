@@ -28,7 +28,13 @@ body {
 }
 
 .appHeader {
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, .2), rgba(0, 0, 0, .25)), url("https://www.atlasandboots.com/wp-content/uploads/2019/05/feat-image-1-most-beautiful-mountains-in-the-world-820x312.jpg");
+  background-image: 
+    linear-gradient(
+      to bottom,
+    rgba(0, 0, 0, .2), 
+    rgba(0, 0, 0, .25)
+    ), 
+    url("https://picsum.photos/512");
   background-position: center center;
   background-size: cover;
   width: 100%;
