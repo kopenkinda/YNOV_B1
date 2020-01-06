@@ -17,38 +17,18 @@ const gradients = [
   [ "#0052D4", "#4364F7", "#6FB1FC" ],
   [ "#5433FF", "#20BDFF", "#A5FECB" ],
   [ "#799F0C", "#ACBB78" ],
-  [ "#ffe259", "#ffa751" ],
-  [ "#00416A", "#E4E5E6" ],
-  [ "#FFE000", "#799F0C" ],
-  [ "#acb6e5", "#86fde8" ],
-  [ "#536976", "#292E49" ],
-  [ "#BBD2C5", "#536976", "#292E49" ],
-  [ "#B79891", "#94716B" ],
-  [ "#9796f0", "#fbc7d4" ],
-  [ "#BBD2C5", "#536976" ],
-  [ "#076585", "#FFFFFF" ],
-  [ "#00467F", "#A5CC82" ],
-  [ "#000C40", "#607D8B" ],
-  [ "#1488CC", "#2B32B2" ],
-  [ "#ec008c", "#fc6767" ],
-  [ "#cc2b5e", "#753a88" ],
-  [ "#2193b0", "#6dd5ed" ],
-  [ "#e65c00", "#F9D423" ],
-  [ "#2b5876", "#4e4376" ],
-  [ "#314755", "#26a0da" ],
-  [ "#77A1D3", "#79CBCA", "#E684AE" ],
-  [ "#ff6e7f", "#bfe9ff" ],
-  [ "#e52d27", "#b31217" ],
-  [ "#603813", "#b29f94" ],
-  [ "#16A085", "#F4D03F" ],
-  [ "#D31027", "#EA384D" ],
-  [ "#EDE574", "#E1F5C4" ],
-  [ "#02AAB0", "#00CDAC" ],
-  [ "#DA22FF", "#9733EE" ],
-  [ "#348F50", "#56B4D3" ],
-  [ "#3CA55C", "#B5AC49" ],
-  [ "#CC95C0", "#DBD4B4", "#7AA1D2" ],
-  [ "#003973", "#E5E5BE" ]
+  [ "#ffe259", "#ffa751" ]
 ];
 
-document.body.style.backgroundImage = `linear-gradient(to left, ${ gradients[ Math.round( Math.random() * ( gradients.length - 1 ) ) ].reduce( ( acc, cur ) => acc + ', ' + cur, '' ).slice( 2 ) })`
+const directions = [
+  'top',
+  'top right',
+  'right',
+  'bottom right',
+  'bottom',
+  'bottom left',
+  'left',
+  'top left'
+]
+
+document.body.style.backgroundImage = `linear-gradient(to ${ directions[ Math.round( Math.random() * 7 ) ] }, ${ gradients[ Math.round( Math.random() * ( gradients.length - 1 ) ) ].reduce( ( acc, cur ) => acc + ', ' + cur, '' ).slice( 2 ) })`

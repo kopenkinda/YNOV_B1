@@ -53,11 +53,11 @@ const countScore = playerAll =>
           } catch ( e )
           {
             let throw3 = Math.round( Math.random() * 10 );
-            // throw3 = 10; // !All Strikes
+            throw3 = 10; // !All Strikes
             if ( throw3 == 10 )
             {
               let throw4 = Math.round( Math.random() * 10 );
-              // throw4 = 10; // !All Strikes
+              throw4 = 10; // !All Strikes
               player.score += 10 + throw3 + throw4 + Math.round( Math.random() * ( 10 - throw4 ) );
             } else
             {
@@ -99,6 +99,6 @@ const getLeaderboard = players =>
 
 const players = [ bowling.p1 ];//, bowling.p2 ];
 generateThrows( players, 10 );
-bowling.p1.throws = [ [ 6, 4 ], [ 5, 2 ], [ 7, 3 ], [2, 5] ];
+bowling.p1.throws = [ [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ], [ 10, 0 ] ];
 countScore( players );
 getLeaderboard( players );

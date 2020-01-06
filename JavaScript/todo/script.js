@@ -2,7 +2,7 @@
 
 /**
 * Todo list
-* ? Add / Remove / Bulk Delete
+* ? Edit
 */
 
 const select = q => document.querySelector( q );
@@ -29,7 +29,7 @@ const addTodo = ( name ) =>
     id: todos.length + 1,
     priority: select( '#priority' ).value || 0
   } );
-  todos = todos.sort( ( a, b ) => a.priority - b.priority );
+  todos = todos;
   render();
   return true;
 }
@@ -42,7 +42,7 @@ const render = () =>
   list.innerHTML = '';
 
   // render list
-  todos.forEach( ( todo, index ) =>
+  todos.sort( ( a, b ) => a.priority - b.priority ).sort( ( a, b ) => b.checked - a.checked ).forEach( ( todo, index ) =>
   {
     todo.id = index;
     let { name, checked, id, priority } = todo;
