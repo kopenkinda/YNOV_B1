@@ -19,10 +19,11 @@ Toujours sur la VM serveur : créez un hook pre-receive qui aura pour fonctions 
 <!-- *RENDU : Le script -->
 ```bash
 cd ~/git_repos/tp-note.git/hooks
-touch pre-recieve && echo "#\!/bin/sh
+touch pre-recieve && echo "#\!/bin/bash
 
 # check if email is valid
-if [[ ! $GIT_AUTHOR_EMAIL =~ ^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$]]; then
+if [[ ! $GIT_AUTHOR_EMAIL =~ ^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$]]
+then
   echo "Invalid Email"
   exit 1
 fi
@@ -30,8 +31,10 @@ fi
 #check if not commiting to master
 zero_commit="0000000000000000000000000000000000000000"
 while read oldrev newrev refname; do
-  if [[ $oldrev == $zero_commit && $refname =~ ^refs/heads/ ]]; then
-    if [[ $refname =~ ^refs/heads/master$ ]]; then
+  if [[ $oldrev == $zero_commit && $refname =~ ^refs/heads/ ]]
+  then
+    if [[ $refname =~ ^refs/heads/master$ ]]
+    then
       echo "Sorry, but you can\'t commit to master"
       exit 1
     fi
@@ -61,11 +64,7 @@ git add readme.txt && git commit -m "first commit"
 git push origin master
 
 # Résultat des commandes.
-# 
-# 
-# 
-# 
-# 
+# ! [Remote rejected] (pre-recieve hook declined)  
 ```
 
 ## Numero Cinco
