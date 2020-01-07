@@ -32,6 +32,7 @@ zero_commit="0000000000000000000000000000000000000000"
 while read oldrev newrev refname; do
   if [[ $oldrev == $zero_commit && $refname =~ ^refs/heads/ ]]; then
     if [[ $refname =~ ^refs/heads/master$ ]]; then
+      echo "Sorry, but you can\'t commit to master"
       exit 1
     fi
   fi
@@ -89,7 +90,7 @@ git checkout -b tp-note-branch-2
 echo "BAN 2" >> readme.txt && git add readme.txt
 git commit -m " branch2 commit"
 git checkout tp-note-branch && git merge tp-note-branch-2
-git push tp-note-branch
+git push origin tp-note-branch
 
 
 # Résultat des commandes
