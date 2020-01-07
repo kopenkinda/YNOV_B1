@@ -39,6 +39,7 @@ while read oldrev newrev refname; do
 done
 exit 0
 " >> pre-recieve
+chmod +x pre-recieve
 ```
 
 ## Numero Tres
