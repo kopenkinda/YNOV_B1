@@ -22,7 +22,7 @@ cd ~/git_repos/tp-note.git/hooks
 touch pre-recieve && echo "#\!/bin/bash
 
 # check if email is valid
-if [[ ! $GIT_AUTHOR_EMAIL =~ ^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$]]
+if [[ ! $GIT_AUTHOR_EMAIL =~ ^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$ ]]
 then
   echo "Invalid Email"
   exit 1
@@ -75,10 +75,12 @@ Sur la VM client : créez une branche tp-note-branch et refaites le push
 git checkout -b tp-note-branch && git push origin tp-note-branch
 
 # Résultat des commandes
-# 
-# 
-# 
-# 
+# Counting objects: 1, done.
+# Delta compression using up to 1 threads.
+# Compressing objects: 100% (1/1), done.
+# Total 1 (delta 1), reused 0 (delta 0)
+# remote: Resolving deltas: 100% (1/1), completed with 1 local objects.
+# To user@VM_serveur_ip:git_repos/tp-note.git
 ```
 
 ## Numero Seis
@@ -94,8 +96,7 @@ git push origin tp-note-branch
 
 
 # Résultat des commandes
-# 
-# 
-# 
-# 
+# Updating hash...hash
+# Fast-forward | 3+++
+# 1 file changed, 1 insertion
 ```
