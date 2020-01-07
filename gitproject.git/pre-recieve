@@ -1,0 +1,20 @@
+
+#!/bin/sh
+
+
+# check if email is valid
+if [[ !  =~ ^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$]]; then
+  echo Invalid Email
+  exit 1
+fi
+
+zero_commit=0000000000000000000000000000000000000000
+while read oldrev newrev refname; do
+  if [[  ==  &&  =~ ^refs/heads/ ]]; then
+    if [[  =~ ^refs/heads/master$ ]]; then
+      exit 1
+    fi
+  fi
+done
+exit 0
+

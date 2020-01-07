@@ -1,0 +1,19 @@
+#!/bin/bash
+
+read GIT_AUTHOR_EMAIL;
+if [[ ! $GIT_AUTHOREMAIL =~ ^[A-Z0-9.%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$]]; then
+echo "Invalid Email"
+exit 1
+fi
+
+protected_branch='master'
+while read local_ref local_sha refname remote_sha;
+do
+remote_branch=$(echo $refname | sed -e 's,./(.),\1,')
+if [ $protected_branch = $remote_branch ];
+then
+echo "abort push: not allowed to push directly to $protected_branch."
+exit 1
+fi
+done
+exit 0
