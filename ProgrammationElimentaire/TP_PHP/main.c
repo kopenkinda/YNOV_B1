@@ -48,6 +48,33 @@ int main() {
     successCounter++;
   totalTests++;
 
+  // PHP_STR_PAD
+  if (testChar(
+      "str_pad: Strings should be equal",
+      php_str_pad("test", 9, "--0"),
+      "test--0--"
+    ))
+    successCounter++;
+  totalTests++;
+
+  // PHP_STR_REPEAT
+  if (testChar(
+      "str_repeat: Strings should be equal",
+      php_str_repeat("test", 3),
+      "testtesttest"
+    ))
+    successCounter++;
+  totalTests++;
+
+   // PHP_ROT13
+  if (testChar(
+      "rot13: Strings should be equal",
+      php_rot13("AbcDef1"),
+      "NopQrs1"
+    ))
+    successCounter++;
+  totalTests++;
+
   // PHP_STRTOLOWER
   if (testChar(
       "strtolower: Strings should be equal",
@@ -93,6 +120,33 @@ int main() {
     successCounter++;
   totalTests++;
 
+  // PHP_UCWORDS
+  if (testChar(
+      "ucwords: Strings should be equal",
+      php_ucwords("strstr testz!"),
+      "Strstr Testz!"
+    ))
+    successCounter++;
+  totalTests++;
+
+  // PHP_STRREV
+  if (testChar(
+      "strrev: Strings should be equal",
+      php_strrev("Po0p"),
+      "p0oP"
+    ))
+    successCounter++;
+  totalTests++;
+
+  // PHP_STRRCHR
+  if (testChar(
+      "strrchr: Strings should be equal",
+      php_strrchr("strrchr testz!", 't'),
+      "tz!"
+    ))
+    successCounter++;
+  totalTests++;
+
   // PHP_SUBSTR
   if (testChar(
       "substr: Strings should be equal",
@@ -120,12 +174,31 @@ int main() {
     successCounter++;
   totalTests++;
 
+  // PHP_WORD_COUNT
+  if (testInts(
+      "word_count: Counter should be equal to 4",
+      php_word_count("This is a test!"),
+      4
+    ))
+    successCounter++;
+  totalTests++;
+
+  // PHP_STRCASECMP
+  if (testInts(
+      "strcasecmp: Output should be 0",
+      php_strcasecmp("hello", "HellO"),
+      0
+    ))
+    successCounter++;
+  totalTests++;
+
   // Show final
   printf(
     "\n\n---- TESTS ----\n\
 Total: %d\n\
 Successful : %d\n\
-Failed: %d\n",
+Failed: %d\n\n\n\
+Live Code on: https://repl.it/@kopenkinda/PHP-Functions\n",
     totalTests,
     successCounter,
     totalTests - successCounter

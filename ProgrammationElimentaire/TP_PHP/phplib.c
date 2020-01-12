@@ -8,26 +8,26 @@
 
 
 /*
-http://php.net/manual/ru/function.explode.php
-http://php.net/manual/ru/function.implode.php
+X http://php.net/manual/ru/function.explode.php
+? http://php.net/manual/ru/function.implode.php
 ! http://php.net/manual/ru/function.lcfirst.php
 ! http://php.net/manual/ru/function.ltrim.php
 ! http://php.net/manual/ru/function.nl2br.php
 ? http://php.net/manual/ru/function.number-format.php
 ! http://php.net/manual/ru/function.rtrim.php
-http://php.net/manual/ru/function.str-pad.php
-http://php.net/manual/ru/function.str-repeat.php
-http://php.net/manual/ru/function.str-rot13.php
-http://php.net/manual/ru/function.str-shuffle.php
-http://php.net/manual/ru/function.str-split.php
-http://php.net/manual/ru/function.str-word-count.php
-http://php.net/manual/ru/function.strcasecmp.php
-http://php.net/manual/ru/function.stripos.php
-http://php.net/manual/ru/function.strrchr.php
-http://php.net/manual/ru/function.strrev.php
-http://php.net/manual/ru/function.strripos.php
-http://php.net/manual/ru/function.strrpos.php
-http://php.net/manual/ru/function.strtok.php
+! http://php.net/manual/ru/function.str-pad.php
+! http://php.net/manual/ru/function.str-repeat.php
+! http://php.net/manual/ru/function.str-rot13.php
+X http://php.net/manual/ru/function.str-shuffle.php
+X http://php.net/manual/ru/function.str-split.php
+! http://php.net/manual/ru/function.str-word-count.php
+! http://php.net/manual/ru/function.strcasecmp.php
+X http://php.net/manual/ru/function.stripos.php
+! http://php.net/manual/ru/function.strrchr.php
+! http://php.net/manual/ru/function.strrev.php
+X http://php.net/manual/ru/function.strripos.php
+X http://php.net/manual/ru/function.strrpos.php
+X http://php.net/manual/ru/function.strtok.php
 ! http://php.net/manual/ru/function.strtolower.php
 ! http://php.net/manual/ru/function.strtoupper.php
 ! http://php.net/manual/ru/function.strtr.php
@@ -36,7 +36,7 @@ http://php.net/manual/ru/function.strtok.php
 ! http://php.net/manual/ru/function.substr.php
 ! http://php.net/manual/ru/function.trim.php
 ! http://php.net/manual/ru/function.ucfirst.php
-http://php.net/manual/ru/function.ucwords.php
+! http://php.net/manual/ru/function.ucwords.php
 http://php.net/manual/ru/function.wordwrap.php
 */
 
@@ -53,12 +53,50 @@ int my_isspace(char c) {
   return 0;
 }
 
+char * php_ucwords(char * source) {
+  char * result = malloc(sizeof(char *) * strlen(source));
+  result[0] = source[0] - 'a' + 'A';
+  for (int i = 1; i < strlen(source); i++) {
+    if (my_isspace(source[i])) {
+      result[i] = source[i];
+      result[i+1] = source[i+1] - 'a' + 'A';
+      i++;
+      continue;
+    }
+    result[i] = source[i];
+  }
+  printf("%s\n", result);
+  return result;
+}
+
+char * php_strrev(char * source) {
+  char * result = malloc(sizeof(char* ) * strlen(source));
+  for (int i = ( strlen(source) - 1 ); i >= 0; i--)
+    result[strlen(source) - (i+1) ] = source[i];
+  return result;
+}
+
+char * php_strrchr(char * source, char ch) {
+  return strrchr(source, ch);
+}
+
 char * php_ltrim(char * source) {
   if (source[0] == '\0') return "";
   char * result = malloc(sizeof(char * ) * strlen(source));
   for (int i = 0; i < strlen(source); i++) result[i] = source[i];
   while (my_isspace( * result)) result++;
   return result;
+}
+
+int php_word_count(const char * source) {
+  int i, w;
+  for (i = 0, w = 0; i < strlen(source); i++) {
+    if (!my_isspace((*(source+i)))) {
+        w++;
+        for (;!my_isspace(*(source+i)) && *(source+i) != '\0'; i++);
+    }
+  }
+  return w;
 }
 
 char * php_rtrim(char * source) {
@@ -69,6 +107,49 @@ char * php_rtrim(char * source) {
   while ( my_isspace(source[--i]) ) counter++;
   char * result = malloc(sizeof(char * ) * (l_source - counter));
   for (int i = 0; i < (l_source - counter); i++) result[i] = source[i];
+  return result;
+}
+
+char * php_str_pad(char * source,  int l, char * str) {
+  if (source[0] == '\0') return "";
+  int length = l - strlen(source);
+  if (length <= 0) return source;
+  char * result = malloc(sizeof(char * ) * l);
+  int i = 0;
+  for (; i < strlen(source); i++) result[i] = source[i];
+  for (int j = 0; strlen(result) < l; j++) {
+    if (j == strlen(str)) j = 0;
+    result[i] = str[j];
+    i++;
+  }
+  return result;
+}
+
+char * php_str_repeat(char * source, int count) {
+  if (source[0] == '\0' || count < 1) return "";
+  char * result = malloc(sizeof(char *) * strlen(source) * count);
+  for (int i = 0; i < count; i++)
+    for (int j = 0; j < strlen(source); j++) result[(i*strlen(source) +j)] = source[j];
+  return result;
+}
+
+char * php_rot13(char * source) {
+  if (source[0] == '\0') return "";
+  char * result = malloc(sizeof(char*) * strlen(source));
+  for (int i = 0; i < strlen(source); i++){
+    if (
+      (source[i] >= 'a' && source[i] < ('z' - 13)) ||
+      (source[i] >= 'A' && source[i] < ('Z' - 13))
+      )
+      result[i] = source[i] + 13;
+    else if (
+      (source[i] >= ('z' - 13) && source[i] <= 'z') || 
+      (source[i] >=  ('Z' - 13) && source[i] <= 'Z')
+      )
+      result[i] = source[i] - 13;
+    else
+      result[i] = source[i];
+  }
   return result;
 }
 
@@ -97,13 +178,6 @@ char * php_nl2br(char * source) {
   }
   return result;
 }
-
-
-// TODO
-// char * php_number_format (int number, int numzero, char separator) {
-//   int l_number = 1 + (int)log10(number);
-//   return "";
-// }
 
 char * php_strtolower(char * str) {
   if (str[0] == '\0') return "";
@@ -215,4 +289,9 @@ int php_substr_count(char * source, char * pattern) {
   }
 
   return *result;
+}
+
+
+int php_strcasecmp(char * str1, char * str2) {
+  return strcmp(php_strtolower(str1), php_strtolower(str2));
 }
