@@ -1,50 +1,65 @@
-class Weather
-{
+class Weather {
+  apiToken = '6545c0cdaa2969';
   _city = "";
   _data = {};
+  _coords = {
+    latitude: 43.6250019,
+    longitude: 1.4319459,
+  }
 
-  constructor( base_city, localStorageContainer = 'weather_app' )
-  {
-    this._city = base_city || 'London';
-    if ( localStorage[ localStorageContainer ] != undefined )
-    {
+  constructor( localStorageContainer = 'weather_app' ) {
+    this.getCoordinates();
+    this.getAddress( this._coords );
+    if ( localStorage[ localStorageContainer ] != undefined ) {
       this._data = JSON.parse( localStorage[ localStorageContainer ] );
-    } else
-    {
-      this.getWeather();
-      localStorage.setItem( localStorageContainer, JSON.stringify( { city: this._city, data: this._data } ) );
+    } else {
+      // this.getWeather();
+      const [ city, data, coords ] = [ this._city, this._data, this._coords ];
+      localStorage.setItem( localStorageContainer, JSON.stringify( { city, data, coords } ) );
     }
   }
 
-  async getWeather( city )
-  {
-    try
-    {
+  async getWeather( city ) {
+    try {
       const data = await fetch( `http://api.openweathermap.org/data/2.5/forecast/daily?units=metric&q=${ city }&cnt=7&APPID=60ab4aca5be46c195b14683b99fab7f0` );
       this._data = await data.json();
-    } catch ( e )
-    {
+    } catch ( e ) {
       console.error( e );
     }
   }
 
-  get city()
-  {
+  async getCoordinates() {
+    navigator.geolocation.getCurrentPosition( data => {
+
+    } );
+  }
+
+  async getAddress( { latitude, longitude } ) {
+    try {
+      const url = `https://eu1.locationiq.com/v1/reverse.php?key=${ this.apiToken }&lat=${ latitude }&lon=${ longitude }&format=json`;
+      const rawData = await fetch( url );
+      const data = await rawData.json();
+      return this._city = data.address.city;
+    } catch ( e ) {
+      console.error( e );
+      return 'Toulouse';
+    }
+    return data;
+  };
+
+  get city() {
     return this._city;
   }
 
-  set city( newCity )
-  {
+  set city( newCity ) {
     this._city = newCity;
   }
 
-  get data()
-  {
+  get data() {
     return this._data; // TODO: Filter and stuff
   }
 
-  set data( newData )
-  {
+  set data( newData ) {
     this._data = newData;
   }
 }
