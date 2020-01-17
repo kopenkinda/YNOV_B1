@@ -1,5 +1,5 @@
 class Weather {
-  apiToken = '6545c0cdaa2969';
+  apiToken = '';
   _city = "";
   _data = {};
   _coords = {
@@ -7,9 +7,10 @@ class Weather {
     longitude: 1.4319459,
   }
 
-  constructor( localStorageContainer = 'weather_app' ) {
+  constructor( apiToken, localStorageContainer = 'weather_app' ) {
+    this.apiToken = apiToken;
     this.getCoordinates();
-    this.getAddress( this._coords );
+    // this.getAddress( this._coords );
     if ( localStorage[ localStorageContainer ] != undefined ) {
       this._data = JSON.parse( localStorage[ localStorageContainer ] );
     } else {
@@ -19,13 +20,10 @@ class Weather {
     }
   }
 
-  async getWeather( city ) {
-    try {
-      const data = await fetch( `http://api.openweathermap.org/data/2.5/forecast/daily?units=metric&q=${ city }&cnt=7&APPID=60ab4aca5be46c195b14683b99fab7f0` );
-      this._data = await data.json();
-    } catch ( e ) {
-      console.error( e );
-    }
+  async getWeather( city = this._city ) {
+    // const data = await fetch( `http://api.openweathermap.org/data/2.5/forecast/daily?units=metric&q=${ city }&cnt=7&APPID=60ab4aca5be46c195b14683b99fab7f0` );
+    // return data.json();
+    return fetch( `http://api.openweathermap.org/data/2.5/forecast/daily?units=metric&q=${ city }&cnt=7&APPID=60ab4aca5be46c195b14683b99fab7f0` );
   }
 
   async getCoordinates() {

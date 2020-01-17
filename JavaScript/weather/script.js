@@ -1,8 +1,6 @@
 const select = q => document.querySelector( q );
 const selectAll = q => document.querySelectorAll( q );
 
-const [ city ] = [ '#city' ].map( a => select( a ) );
-
 const apiData = {
   cod: "200",
   message: 0,
@@ -194,22 +192,31 @@ const apiData = {
   ]
 }
 
-const app = new Weather( 'Toulouse' );
-app.data = apiData;
+const [ city, appBody ] = [ '#city', '.appBody' ].map( a => select( a ) );
+const app = new Weather( '6545c0cdaa2969', 'Toulouse' );
 
-const render = () =>
-{
-
+const render = async () => {
+  try {
+    // await app.getWeather();
+    app.data = apiData;
+    appBody.innerHTML = `<pre class="appState">${ JSON.stringify( app.data.list[ 0 ], null, 2 ) }</pre>`;
+  }
+  catch ( e ) {
+    if ( e == 'TypeError: Failed to fetch' ) appBody.innerHTML = `<h1 class="appState">Cant find ${ app.city }</h1>`;
+    else appBody.innerHTML = '<h1 class="appState"> Type in a city...</h1>';
+  }
 };
 
 city.value = app.city;
-city.oninput = () =>
-{
+city.oninput = () => {
   app.city = city.value;
 }
 
-city.onchange = () =>
-{
-  // app.getWeather( app.city );
-  render();
+city.onchange = () => {
+  if ( app.city.trim() != '' )
+    render();
+}
+
+select( '.test' ).onclick = () => {
+  select( '.appHeader' ).classList.toggle( 'loader' );
 }
