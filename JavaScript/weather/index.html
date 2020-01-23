@@ -6,25 +6,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Weather App</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles/main.css">
 </head>
 
 <body>
 
   <div id="app">
-    <div class="appHeader">
-      <input type="text" id="city" placeholder="Search...">
+
+    <div class="app-body">
+
+      <div class="weather-group">
+        <h2 class="weather-group__name">Toulouse</h2>
+        <div class="weather-group__data">
+          <div class="weather-group__item">
+            
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <div class="appBody">
-      <h1 class="appState"> Type in a city...
-        <a href="#" class="test">Test</a>
-      </h1>
+    <div class="app-controls">
+      <input type="text" class="app-controls__input" placeholder="Type in the city name...">
+      <a href="#" class="btn app-controls__button">+</a>
     </div>
   </div>
 
-  <script src="Weather.js"></script>
-  <script src="script.js"></script>
+  <script src="scripts/api.js"></script>
+  <script src="scripts/main.js"></script>
 </body>
 
 </html>
