@@ -71,10 +71,14 @@ body {
   min-height: 48px;
   padding: 8px 0;
   display: grid;
-  grid-template-columns: 32px 1fr;
+  grid-template-columns: 32px 32px 1fr;
   justify-items: center;
   align-items: center;
   border-right: 2px solid transparent;
+}
+
+i.fas.fa-edit {
+  cursor: pointer;
 }
 
 .todo-item:nth-child(2n) {

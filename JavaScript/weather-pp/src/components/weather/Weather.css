@@ -1,0 +1,48 @@
+@keyframes loader {
+  0% {
+    content: '.';
+  }
+  33% {
+    content: '..';
+  }
+  66% {
+    content: '...';
+  }
+}
+
+.weather {
+  width: calc(100% + 16px);
+  height: 256px;
+}
+
+.cityName {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.weatherList {
+  margin-top: 24px;
+  display: flex;
+  overflow-y: visible;
+  overflow-x: scroll;
+  padding: 16px;
+}
+
+.weatherItem {
+  margin-right: 16px;
+  min-width: 164px;
+  height: 164px;
+  position: relative;
+  box-shadow:
+    4px 4px 16px rgba(0, 0, 0, .1),
+    -4px -4px 16px rgba(255, 255, 255, .1);
+}
+
+.loader {
+  text-align: center;
+}
+
+.loader::after {
+  content: '';
+  animation: loader 1s linear infinite;
+}

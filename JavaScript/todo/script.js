@@ -1,3 +1,7 @@
+/*
+* All code can be found on https://github.com/kopenkinda/YNOV_B1/master/JavaScript/
+*/
+
 //@ts-check
 
 /**
@@ -62,6 +66,15 @@ const render = () =>
     todoItemName.classList.add( 'todo-item__name' );
     todoItemName.innerText = name;
 
+    let modifytodo = document.createElement( 'i' );
+    modifytodo.classList.add( 'fas', 'fa-edit' );
+
+    modifytodo.onclick = () => {
+      const newValue = window.prompt('Modify your todo', name);
+      todos = [ ...todos.slice( 0, index ), { name: newValue, checked, id, priority }, ...todos.slice( index + 1 ) ];
+      render();
+    }
+
     if ( checked )
     {
       deletionCounter++;
@@ -79,7 +92,10 @@ const render = () =>
       render();
     };
 
+
+
     todoContainer.appendChild( customCheckbox );
+    todoContainer.appendChild( modifytodo );
     todoContainer.appendChild( todoItemName );
     list.appendChild( todoContainer );
   } )
