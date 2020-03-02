@@ -30,9 +30,10 @@
 
 .weatherItem {
   margin-right: 16px;
-  min-width: 164px;
+  width: 164px;
   height: 164px;
   position: relative;
+  padding: 8px;
   box-shadow:
     4px 4px 16px rgba(0, 0, 0, .1),
     -4px -4px 16px rgba(255, 255, 255, .1);
@@ -45,4 +46,29 @@
 .loader::after {
   content: '';
   animation: loader 1s linear infinite;
+}
+
+.weatherItem span {
+  display: inline-block;
+  font-size: 12px;
+}
+
+.deg::after {
+  content: ' °C';
+  font-weight: normal;
+}
+
+.weatherItem_date {
+  display: block;
+  width: 100%;
+  font-size: 16px!important;
+  font-weight: bold;
+}
+
+.weatherItem_temp {
+  font-size: 14px!important;
+}
+
+.weatherItem_feels {
+  color: #00000050;
 }

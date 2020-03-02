@@ -3,8 +3,8 @@ import React, { createContext, useState } from 'react';
 export const WeatherContext = createContext();
 
 export const WeatherProvider = props => {
-  const initState = ( localStorage[ 'weatherApp' ] !== undefined ) ?
-    JSON.parse( localStorage[ 'weatherApp' ] ) : [ 'Paris', 'Barcelona' ];
+  const initState = ( localStorage[ 'weather_app' ] !== undefined ) ?
+    JSON.parse( localStorage[ 'weather_app' ] ) : [ 'Paris', 'Barcelona' ];
   
   const [ cities, setCities ] = useState( initState );
 

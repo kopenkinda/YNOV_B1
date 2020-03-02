@@ -6,12 +6,17 @@ import './CitiesList.css'
 
 function CitiesList() {
   const [ cities, setCities ] = useContext( WeatherContext );
-  const [ value, setValue ] = useState( 'Toulouse' );
+  const [ value, setValue ] = useState( '' );
 
   useEffect( () => {
-    setCities( [ ...cities, value ] );
+    if ( value )
+      setCities( [ ...cities, value ] );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ value ] );
+
+  useEffect( () => {
+    localStorage[ 'weather_app' ] = JSON.stringify( cities );
+  }, [ cities ] );
 
   const handleInput = ( e ) => {
     setValue( e.target.value );
